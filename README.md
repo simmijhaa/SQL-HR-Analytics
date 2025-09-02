@@ -1,62 +1,70 @@
-📊 SQL HR Analytics
+📊 SQL HR Analytics Project
 📌 Project Overview
 
-The SQL HR Analytics project focuses on analyzing employee data to uncover workforce insights using SQL.
-The objective is to help organizations understand trends in employee attrition, job satisfaction, demographics, and departmental performance, which can directly influence HR policies and decision-making.
+Employee attrition and workforce trends are among the top challenges faced by HR departments. This project leverages SQL to analyze HR data and uncover insights into attrition, demographics, and departmental performance.
 
-This project demonstrates my ability to:
+The objective is to:
 
-Work with relational databases
+Identify factors influencing employee turnover
 
-Write optimized SQL queries
+Provide actionable HR insights using SQL queries
 
-Perform exploratory data analysis (EDA) using SQL
+Demonstrate SQL for real-world business analytics
 
-Generate actionable HR insights
-
-🗂 Repository Structure
+📂 Repository Structure
 SQL-HR-Analytics/
-│── data/
-│   └── hr_dataset.csv           # Dataset used for analysis
-│
-│── sql/
-│   └── queries.sql              # SQL queries written for insights
-│
-│── outputs/
-│   └── analysis_summary.txt     # Final insights from SQL queries
-│
-│── README.md                    # Project documentation
+│── data/                # Dataset (hr_dataset.csv)  
+│── queries.sql          # SQL queries for analysis  
+│── outputs/             # Summary reports / visual exports  
+│── README.md            # Project documentation  
 
-⚙️ Tools & Technologies
+🛠 Tools & Technologies
 
 Database: MySQL / PostgreSQL
 
-SQL Client: pgAdmin / MySQL Workbench
+SQL Client: MySQL Workbench / pgAdmin
 
 Version Control: Git & GitHub
 
 Optional Visualization: Power BI / Tableau
 
-📌 Key SQL Queries & Use Cases
+📊 Dataset Overview
+
+The dataset contains employee-level HR information such as:
+
+Age, Gender, Marital Status
+
+Department & Job Role
+
+Salary, Education, Years of Service
+
+Attrition (Yes/No)
+
+Business Travel, Overtime, Job Satisfaction
+
+📈 Rows: ~1,470
+📊 Columns: 35+
+
+🔑 Key SQL Queries & Use Cases
 
 Employee Distribution by Department
 
-SELECT department, COUNT(*) AS employee_count
-FROM hrdata
+SELECT department, COUNT(*) AS employee_count 
+FROM hrdata 
 GROUP BY department;
 
 
 Average Age by Department
 
-SELECT department, AVG(age) AS average_age
-FROM hrdata
+SELECT department, AVG(age) AS average_age 
+FROM hrdata 
 GROUP BY department;
 
 
 Attrition Rate by Age Band
 
 SELECT age_band, 
-       SUM(CASE WHEN attrition = 'Yes' THEN 1 ELSE 0 END) / COUNT(*) * 100 AS attrition_rate
+       SUM(CASE WHEN attrition = 'Yes' THEN 1 ELSE 0 END) * 100.0 / COUNT(*) AS attrition_rate
 FROM hrdata
 GROUP BY age_band;
 
@@ -73,41 +81,41 @@ ORDER BY attrition_count DESC;
 Impact of Business Travel on Attrition
 
 SELECT business_travel, 
-       SUM(CASE WHEN attrition = 'Yes' THEN 1 ELSE 0 END) AS attrition_cases
+       SUM(CASE WHEN attrition = 'Yes' THEN 1 ELSE 0 END) * 100.0 / COUNT(*) AS attrition_rate
 FROM hrdata
 GROUP BY business_travel;
 
-📈 Insights Derived
+📌 Insights Derived
 
-✔️ Departments with the highest and lowest job satisfaction
-✔️ Attrition rate across age groups, education levels, and job roles
-✔️ Impact of business travel & job role on employee turnover
-✔️ Common workforce demographics & career progression
-✔️ Patterns in education and promotions
+✔ Departments with highest & lowest job satisfaction
+✔ Attrition rate across age bands and job roles
+✔ Business travel impact on employee turnover
+✔ Common career progression trends
+✔ Patterns in education, promotions, and attrition
 
-📊 Future Enhancements
+🚀 Future Enhancements
 
-🔹 Build a Power BI dashboard to visualize attrition & demographics
+Build a Power BI dashboard to visualize attrition & demographics
 
-🔹 Automate SQL queries for real-time HR reporting
+Automate SQL queries for real-time HR reporting
 
-🔹 Extend to predictive analytics (e.g., attrition prediction using Python ML models)
+Extend to predictive analytics (attrition prediction using ML models)
 
-🔹 Incorporate advanced SQL techniques (CTEs, Window Functions) for deeper insights
+Incorporate advanced SQL techniques (CTEs, Window Functions) for deeper insights
 
 🎯 Learning Outcomes
 
 Through this project, I:
 
-Strengthened my SQL query writing & database management skills
+Strengthened SQL query writing & database management skills
 
 Gained hands-on experience in HR data analytics
 
 Learned how to present data-driven insights for business impact
 
-Created a portfolio-ready project showcasing SQL for real-world analytics
+Created a portfolio-ready project showcasing SQL for HR analytics
 
 👩‍💻 Author
 
 Simmi Jha
-📌 Data Analytics Enthusiast | SQL | Power BI | Python
+Data Analytics Enthusiast | SQL | Power BI | Python
