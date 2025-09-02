@@ -1,22 +1,22 @@
 📊 SQL HR Analytics Project
-📌 Project Overview
+🔎 Overview
 
-Employee attrition and workforce trends are among the top challenges faced by HR departments. This project leverages SQL to analyze HR data and uncover insights into attrition, demographics, and departmental performance.
+Employee attrition and workforce management are major challenges faced by HR teams. This project leverages SQL to analyze HR datasets and uncover actionable insights into attrition, workforce demographics, and departmental performance.
 
-The objective is to:
+The goal of this project is to:
 
 Identify factors influencing employee turnover
 
-Provide actionable HR insights using SQL queries
+Provide data-driven HR insights using SQL queries
 
-Demonstrate SQL for real-world business analytics
+Demonstrate SQL skills for real-world business analytics
 
 📂 Repository Structure
-SQL-HR-Analytics/
-│── data/                # Dataset (hr_dataset.csv)  
-│── queries.sql          # SQL queries for analysis  
-│── outputs/             # Summary reports / visual exports  
-│── README.md            # Project documentation  
+SQL-HR-Analytics/  
+│── data/            # Dataset (hr_dataset.csv)  
+│── queries.sql      # SQL queries for analysis  
+│── outputs/         # Query results / visual exports  
+│── README.md        # Project documentation  
 
 🛠 Tools & Technologies
 
@@ -28,80 +28,81 @@ Version Control: Git & GitHub
 
 Optional Visualization: Power BI / Tableau
 
-📊 Dataset Overview
+📑 Dataset Overview
 
-The dataset contains employee-level HR information such as:
+The dataset contains employee-level HR information including:
 
-Age, Gender, Marital Status
+Demographics: Age, Gender, Marital Status
 
-Department & Job Role
+Job Details: Department, Job Role, Years of Service
 
-Salary, Education, Years of Service
+Compensation: Salary, Education, Business Travel, Overtime
 
-Attrition (Yes/No)
+Attrition Flag: Whether an employee left (Yes/No)
 
-Business Travel, Overtime, Job Satisfaction
+Job Satisfaction & Performance metrics
 
-📈 Rows: ~1,470
-📊 Columns: 35+
+📊 Size: ~1,470 rows | 35+ columns
 
-🔑 Key SQL Queries & Use Cases
-
-Employee Distribution by Department
-
+🔑 Key SQL Queries & Insights
+1️⃣ Employee Distribution by Department
 SELECT department, COUNT(*) AS employee_count 
 FROM hrdata 
 GROUP BY department;
 
 
-Average Age by Department
+👉 Helps HR identify department-wise workforce size.
 
+2️⃣ Average Age by Department
 SELECT department, AVG(age) AS average_age 
 FROM hrdata 
 GROUP BY department;
 
 
-Attrition Rate by Age Band
+👉 Reveals age diversity across departments.
 
+3️⃣ Attrition Rate by Age Band
 SELECT age_band, 
-       SUM(CASE WHEN attrition = 'Yes' THEN 1 ELSE 0 END) * 100.0 / COUNT(*) AS attrition_rate
-FROM hrdata
+       SUM(CASE WHEN attrition = 'Yes' THEN 1 ELSE 0 END)*100.0/COUNT(*) AS attrition_rate
+FROM hrdata 
 GROUP BY age_band;
 
 
-Top Job Roles with Highest Attrition
+👉 Highlights vulnerable age groups with high attrition risk.
 
-SELECT job_role, COUNT(*) AS attrition_count
-FROM hrdata
-WHERE attrition = 'Yes'
-GROUP BY job_role
+4️⃣ Top Job Roles with Highest Attrition
+SELECT job_role, COUNT(*) AS attrition_count 
+FROM hrdata 
+WHERE attrition = 'Yes' 
+GROUP BY job_role 
 ORDER BY attrition_count DESC;
 
 
-Impact of Business Travel on Attrition
+👉 Helps HR target retention strategies for critical job roles.
 
+5️⃣ Impact of Business Travel on Attrition
 SELECT business_travel, 
-       SUM(CASE WHEN attrition = 'Yes' THEN 1 ELSE 0 END) * 100.0 / COUNT(*) AS attrition_rate
-FROM hrdata
+       SUM(CASE WHEN attrition = 'Yes' THEN 1 ELSE 0 END)*100.0/COUNT(*) AS attrition_rate
+FROM hrdata 
 GROUP BY business_travel;
+
+
+👉 Uncovers how frequent travel influences employee turnover.
 
 📌 Insights Derived
 
 ✔ Departments with highest & lowest job satisfaction
-✔ Attrition rate across age bands and job roles
-✔ Business travel impact on employee turnover
-✔ Common career progression trends
-✔ Patterns in education, promotions, and attrition
+✔ Attrition rate across age bands & job roles
+✔ Impact of business travel on employee turnover
+✔ Career progression patterns (years of service vs attrition)
+✔ Education, promotions & attrition relationship
 
 🚀 Future Enhancements
 
-Build a Power BI dashboard to visualize attrition & demographics
-
-Automate SQL queries for real-time HR reporting
-
-Extend to predictive analytics (attrition prediction using ML models)
-
-Incorporate advanced SQL techniques (CTEs, Window Functions) for deeper insights
+🔹 Build a Power BI dashboard for visualization
+🔹 Automate SQL queries for real-time HR reporting
+🔹 Extend to predictive analytics (attrition prediction using ML)
+🔹 Use advanced SQL (CTEs, Window Functions) for deeper insights
 
 🎯 Learning Outcomes
 
@@ -111,11 +112,11 @@ Strengthened SQL query writing & database management skills
 
 Gained hands-on experience in HR data analytics
 
-Learned how to present data-driven insights for business impact
+Learned how to translate data into business insights
 
-Created a portfolio-ready project showcasing SQL for HR analytics
+Created a portfolio-ready SQL analytics project
 
 👩‍💻 Author
 
-Simmi Jha
-Data Analytics Enthusiast | SQL | Power BI | Python
+Simmi Jha – Data Analytics Enthusiast
+🔗 Skills: SQL | Power BI | Python
