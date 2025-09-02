@@ -1,127 +1,113 @@
-📊 HR Analytics SQL Project
-📌 Overview
+📊 SQL HR Analytics
+📌 Project Overview
 
-This project explores an HR dataset using SQL to uncover insights about employees, attrition, job satisfaction, and workforce demographics.
-The goal is to analyze HR data with SQL queries and prepare insights for building an interactive Power BI Dashboard in the future.
+The SQL HR Analytics project focuses on analyzing employee data to uncover workforce insights using SQL.
+The objective is to help organizations understand trends in employee attrition, job satisfaction, demographics, and departmental performance, which can directly influence HR policies and decision-making.
 
-🗂️ Dataset
+This project demonstrates my ability to:
 
-File: hrdata.csv
+Work with relational databases
 
-Columns include:
+Write optimized SQL queries
 
-EmployeeID, Age, Age_Band, Department, Job_Role,
+Perform exploratory data analysis (EDA) using SQL
 
-Education, Marital_Status, Business_Travel,
+Generate actionable HR insights
 
-Job_Satisfaction, Attrition
+🗂 Repository Structure
+SQL-HR-Analytics/
+│── data/
+│   └── hr_dataset.csv           # Dataset used for analysis
+│
+│── sql/
+│   └── queries.sql              # SQL queries written for insights
+│
+│── outputs/
+│   └── analysis_summary.txt     # Final insights from SQL queries
+│
+│── README.md                    # Project documentation
 
-🛠️ Tools Used
+⚙️ Tools & Technologies
 
-SQL (PostgreSQL / MySQL / any RDBMS)
+Database: MySQL / PostgreSQL
 
-Power BI (Optional) for visualization
+SQL Client: pgAdmin / MySQL Workbench
 
-GitHub for version control & portfolio showcase
+Version Control: Git & GitHub
 
-🔎 SQL Analysis
-1️⃣ Employee Overview
+Optional Visualization: Power BI / Tableau
 
-Count employees per department
+📌 Key SQL Queries & Use Cases
+
+Employee Distribution by Department
 
 SELECT department, COUNT(*) AS employee_count
 FROM hrdata
 GROUP BY department;
 
 
-📌 Insight: Shows department size distribution.
+Average Age by Department
 
-Average age per department
-
-SELECT department, ROUND(AVG(age), 1) AS average_age
+SELECT department, AVG(age) AS average_age
 FROM hrdata
 GROUP BY department;
 
 
-📌 Insight: Helps compare workforce maturity across departments.
-
-2️⃣ Job Satisfaction Analysis
-
-Average job satisfaction by education level
-
-SELECT education, ROUND(AVG(job_satisfaction), 2) AS average_satisfaction
-FROM hrdata
-GROUP BY education;
-
-
-📌 Insight: Shows if education level impacts satisfaction.
-
-Departments with highest & lowest satisfaction
-
-SELECT department, ROUND(AVG(job_satisfaction), 2) AS average_satisfaction
-FROM hrdata
-GROUP BY department
-ORDER BY average_satisfaction DESC
-LIMIT 1;   -- Highest
-
-SELECT department, ROUND(AVG(job_satisfaction), 2) AS average_satisfaction
-FROM hrdata
-GROUP BY department
-ORDER BY average_satisfaction ASC
-LIMIT 1;   -- Lowest
-
-
-📌 Insight: Identifies best and worst departments by satisfaction.
-
-3️⃣ Attrition Analysis
-
-Attrition rate by age band
+Attrition Rate by Age Band
 
 SELECT age_band, 
-       ROUND(100.0 * SUM(CASE WHEN attrition = 'Yes' THEN 1 ELSE 0 END) / COUNT(*), 2) AS attrition_rate
+       SUM(CASE WHEN attrition = 'Yes' THEN 1 ELSE 0 END) / COUNT(*) * 100 AS attrition_rate
 FROM hrdata
-GROUP BY age_band
-ORDER BY attrition_rate DESC;
+GROUP BY age_band;
 
 
-📌 Insight: Younger age bands often have higher attrition.
+Top Job Roles with Highest Attrition
 
-Attrition by education & age band
-
-SELECT education, age_band, 
-       ROUND(100.0 * SUM(CASE WHEN attrition = 'Yes' THEN 1 ELSE 0 END) / COUNT(*), 2) AS attrition_rate
+SELECT job_role, COUNT(*) AS attrition_count
 FROM hrdata
-GROUP BY education, age_band
-ORDER BY attrition_rate DESC
-LIMIT 5;
+WHERE attrition = 'Yes'
+GROUP BY job_role
+ORDER BY attrition_count DESC;
 
-4️⃣ Demographic Insights
 
-Satisfaction among frequent travelers
+Impact of Business Travel on Attrition
 
-SELECT education, ROUND(AVG(job_satisfaction), 2) AS average_satisfaction
+SELECT business_travel, 
+       SUM(CASE WHEN attrition = 'Yes' THEN 1 ELSE 0 END) AS attrition_cases
 FROM hrdata
-WHERE business_travel = 'Travel_Frequently'
-GROUP BY education
-ORDER BY average_satisfaction DESC
-LIMIT 3;
+GROUP BY business_travel;
 
+📈 Insights Derived
 
-Satisfaction among married employees
+✔️ Departments with the highest and lowest job satisfaction
+✔️ Attrition rate across age groups, education levels, and job roles
+✔️ Impact of business travel & job role on employee turnover
+✔️ Common workforce demographics & career progression
+✔️ Patterns in education and promotions
 
-SELECT age_band, ROUND(AVG(job_satisfaction), 2) AS average_satisfaction
-FROM hrdata
-WHERE marital_status = 'Married'
-GROUP BY age_band
-ORDER BY average_satisfaction DESC
-LIMIT 1;
+📊 Future Enhancements
 
-✅ Key Insights
+🔹 Build a Power BI dashboard to visualize attrition & demographics
 
-Marketing department shows the highest attrition.
+🔹 Automate SQL queries for real-time HR reporting
 
-Senior employees (40+) report higher satisfaction compared to younger employees.
+🔹 Extend to predictive analytics (e.g., attrition prediction using Python ML models)
 
-Frequent business travelers tend to have lower job satisfaction.
+🔹 Incorporate advanced SQL techniques (CTEs, Window Functions) for deeper insights
 
-Married employees aged 30–40 show the highest job satisfaction.
+🎯 Learning Outcomes
+
+Through this project, I:
+
+Strengthened my SQL query writing & database management skills
+
+Gained hands-on experience in HR data analytics
+
+Learned how to present data-driven insights for business impact
+
+Created a portfolio-ready project showcasing SQL for real-world analytics
+
+👩‍💻 Author
+
+Simmi Jha
+📌 Data Analytics Enthusiast | SQL | Power BI | Python
